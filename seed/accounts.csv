@@ -1,0 +1,51 @@
+id,name,industry,annual_revenue,sla,customer_priority,active,segment
+BMK_ACC_0001,BMK_Acme Manufacturing,Manufacturing,52000000,Platinum,High,Yes,Enterprise
+BMK_ACC_0002,BMK_Northwind Logistics,Logistics,18000000,Gold,High,Yes,Mid-Market
+BMK_ACC_0003,BMK_Globex Pharma,Pharmaceuticals,240000000,Platinum,High,Yes,Enterprise
+BMK_ACC_0004,BMK_Initech Software,Technology,15000000,Silver,Medium,Yes,Mid-Market
+BMK_ACC_0005,BMK_Umbrella Biotech,Biotechnology,87000000,Gold,High,Yes,Enterprise
+BMK_ACC_0006,BMK_Stark Industries,Aerospace,1200000000,Platinum,High,Yes,Enterprise
+BMK_ACC_0007,BMK_Wayne Enterprises,Conglomerate,4500000000,Platinum,High,Yes,Enterprise
+BMK_ACC_0008,BMK_Vandelay Imports,Retail,9500000,Bronze,Medium,Yes,SMB
+BMK_ACC_0009,BMK_Pied Piper Comms,Technology,42000000,Gold,High,Yes,Mid-Market
+BMK_ACC_0010,BMK_Hooli Cloud,Technology,920000000,Platinum,High,Yes,Enterprise
+BMK_ACC_0011,BMK_Wonka Confections,Consumer Goods,160000000,Gold,Medium,Yes,Enterprise
+BMK_ACC_0012,BMK_Cyberdyne Robotics,Robotics,310000000,Platinum,High,Yes,Enterprise
+BMK_ACC_0013,BMK_Tyrell Genomics,Biotechnology,75000000,Gold,High,Yes,Mid-Market
+BMK_ACC_0014,BMK_Massive Dynamic,Conglomerate,2100000000,Platinum,High,Yes,Enterprise
+BMK_ACC_0015,BMK_Spacely Sprockets,Manufacturing,28000000,Silver,Medium,Yes,Mid-Market
+BMK_ACC_0016,BMK_Cogswell Cogs,Manufacturing,22000000,Silver,Medium,Yes,Mid-Market
+BMK_ACC_0017,BMK_Soylent Foods,Consumer Goods,135000000,Gold,Medium,Yes,Enterprise
+BMK_ACC_0018,BMK_Oscorp Chemicals,Chemicals,480000000,Platinum,High,Yes,Enterprise
+BMK_ACC_0019,BMK_Roxxon Energy,Energy,650000000,Platinum,High,Yes,Enterprise
+BMK_ACC_0020,BMK_LexCorp Defense,Defense,780000000,Platinum,High,Yes,Enterprise
+BMK_ACC_0021,BMK_Yoyodyne Propulsion,Aerospace,210000000,Gold,High,Yes,Enterprise
+BMK_ACC_0022,BMK_InGen Genetics,Biotechnology,55000000,Gold,High,Yes,Mid-Market
+BMK_ACC_0023,BMK_Aperture Science,Research,140000000,Platinum,High,Yes,Enterprise
+BMK_ACC_0024,BMK_Black Mesa Labs,Research,95000000,Gold,High,Yes,Mid-Market
+BMK_ACC_0025,BMK_Nakatomi Trading,Finance,330000000,Platinum,High,Yes,Enterprise
+BMK_ACC_0026,BMK_Weyland Yutani,Conglomerate,1800000000,Platinum,High,Yes,Enterprise
+BMK_ACC_0027,BMK_Buy n Large Retail,Retail,920000000,Gold,Medium,Yes,Enterprise
+BMK_ACC_0028,BMK_OmniCorp Robotics,Robotics,260000000,Platinum,High,Yes,Enterprise
+BMK_ACC_0029,BMK_Veridian Dynamics,Conglomerate,540000000,Platinum,High,Yes,Enterprise
+BMK_ACC_0030,BMK_Encom Systems,Technology,68000000,Gold,High,Yes,Mid-Market
+BMK_ACC_0031,BMK_Sirius Cybernetics,Technology,150000000,Gold,Medium,Yes,Enterprise
+BMK_ACC_0032,BMK_Gringotts Wizarding Bank,Finance,1100000000,Platinum,High,Yes,Enterprise
+BMK_ACC_0033,BMK_Daily Planet Media,Media,38000000,Silver,Medium,Yes,Mid-Market
+BMK_ACC_0034,BMK_Tessier-Ashpool SA,Conglomerate,3200000000,Platinum,High,Yes,Enterprise
+BMK_ACC_0035,BMK_Krusty Krab Foods,Food Service,8200000,Bronze,Low,Yes,SMB
+BMK_ACC_0036,BMK_Planet Express Couriers,Logistics,12000000,Silver,Medium,Yes,SMB
+BMK_ACC_0037,BMK_MomCorp Manufacturing,Manufacturing,420000000,Platinum,High,Yes,Enterprise
+BMK_ACC_0038,BMK_Combine Forces,Defense,290000000,Gold,High,Yes,Enterprise
+BMK_ACC_0039,BMK_Black Lotus Trading,Finance,180000000,Gold,Medium,Yes,Enterprise
+BMK_ACC_0040,BMK_Helix Genetic Systems,Biotechnology,45000000,Silver,Medium,Yes,Mid-Market
+BMK_ACC_0041,BMK_Nuka-Cola Bottling,Consumer Goods,72000000,Gold,Medium,Yes,Mid-Market
+BMK_ACC_0042,BMK_Vault-Tec Industries,Defense,320000000,Platinum,High,Yes,Enterprise
+BMK_ACC_0043,BMK_Sirius Online,Technology,28000000,Silver,Medium,Yes,Mid-Market
+BMK_ACC_0044,BMK_Mishima Zaibatsu,Conglomerate,2700000000,Platinum,High,Yes,Enterprise
+BMK_ACC_0045,BMK_Atlas Chemicals,Chemicals,195000000,Gold,High,Yes,Enterprise
+BMK_ACC_0046,BMK_Rapture Plasmid Co,Biotechnology,88000000,Gold,High,Yes,Mid-Market
+BMK_ACC_0047,BMK_Shinra Electric,Energy,920000000,Platinum,High,Yes,Enterprise
+BMK_ACC_0048,BMK_NeoTokyo Networks,Technology,210000000,Gold,High,Yes,Enterprise
+BMK_ACC_0049,BMK_Yorha Defense,Defense,140000000,Gold,High,Yes,Enterprise
+BMK_ACC_0050,BMK_Arstotzka Federal,Government,180000000,Silver,Medium,Yes,Enterprise

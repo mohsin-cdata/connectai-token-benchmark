@@ -1,0 +1,29 @@
+# Secrets
+.env
+*.local.json
+*.mcp.json
+PAT*.txt
+
+# Internal artefacts not for public release
+internal/
+
+# Runtime audit outputs (regenerated when benchmark fires)
+output/results_final.json
+output/run_ledger.jsonl
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db

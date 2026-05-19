@@ -1,0 +1,53 @@
+---
+title: "How Connect AI cuts Claude token usage - 97.6% fewer tokens, 21 fewer tool calls"
+---
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "background": "#F1EEE9",
+    "primaryColor": "#002660",
+    "primaryTextColor": "#F1EEE9",
+    "primaryBorderColor": "#15151C",
+    "lineColor": "#15151C",
+    "secondaryColor": "#FFE500",
+    "tertiaryColor": "#B5B9BC",
+    "fontFamily": "Inter, Arial, sans-serif",
+    "fontSize": "18px"
+  },
+  "flowchart": {
+    "nodeSpacing": 50,
+    "rankSpacing": 60,
+    "padding": 16
+  }
+}}%%
+flowchart TB
+    subgraph RAW["RAW BASELINE  -  183,541 tokens  -  22 tool calls  -  $0.5957/query"]
+        direction LR
+        BU[User asks question]:::userBox
+        BC[Claude]:::claudeBox
+        BD["Discovery chain<br/>getCatalogs<br/>+ getInstructions x3<br/>+ getSchemas x3<br/>+ getTables x3<br/>+ getColumns x3"]:::costBox
+        BQ["3 separate queryData calls<br/>ServiceNow + Salesforce + Snowflake"]:::costBox
+        BA[Synthesise + answer]:::costBox
+        BU --> BC
+        BC -->|"loads 11 universal tool defs"| BD
+        BD --> BQ
+        BQ --> BA
+    end
+
+    subgraph OPT["OPTIMIZED  -  4,427 tokens  -  1 tool call  -  $0.0267/query"]
+        direction LR
+        OU[User asks question]:::userBox
+        OC[Claude]:::claudeBox
+        OQ["get_incidents Custom Tool<br/>Workspace + Custom Tool combo"]:::savedBox
+        OA[Answer]:::savedBox
+        OU --> OC
+        OC -->|"loads 1 scoped tool def"| OQ
+        OQ --> OA
+    end
+
+    RAW ~~~ OPT
+
+    classDef userBox       fill:#002660,stroke:#15151C,stroke-width:2px,color:#F1EEE9,font-weight:bold;
+    classDef claudeBox     fill:#002660,stroke:#15151C,stroke-width:2px,color:#F1EEE9,font-weight:bold;
+    classDef costBox       fill:#B5B9BC,stroke:#15151C,stroke-width:1.5px,color:#15151C;
+    classDef savedBox      fill:#FFE500,stroke:#15151C,stroke-width:2px,color:#15151C,font-weight:bold;

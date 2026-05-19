@@ -1,0 +1,51 @@
+number,short_description,priority,state,urgency,severity,category,opened_at,company
+BMK-INC0010001,Email service intermittent for 80% of users,1,2,1,1,Email,2026-05-15T08:12:00Z,BMK_ACC_0001
+BMK-INC0010002,VPN authentication failures region EU,1,2,1,1,Network,2026-05-15T09:20:00Z,BMK_ACC_0002
+BMK-INC0010003,Production database slow query timeout,2,2,2,2,Database,2026-05-15T10:05:00Z,BMK_ACC_0003
+BMK-INC0010004,Manufacturing line MES system offline,1,2,1,1,Application,2026-05-15T11:30:00Z,BMK_ACC_0001
+BMK-INC0010005,Cannot access shared drives from finance team,3,2,3,3,Storage,2026-05-15T13:00:00Z,BMK_ACC_0004
+BMK-INC0010006,Pharma cold-chain monitoring alerting fails,1,2,1,1,IoT,2026-05-15T13:45:00Z,BMK_ACC_0003
+BMK-INC0010007,Salesforce CRM sync queue backlog 12h,2,2,2,2,Integration,2026-05-15T14:10:00Z,BMK_ACC_0006
+BMK-INC0010008,Snowflake daily ETL job failed checksum,2,2,2,2,Data,2026-05-15T14:30:00Z,BMK_ACC_0007
+BMK-INC0010009,Logistics tracking API returning 503,1,2,1,1,API,2026-05-15T15:00:00Z,BMK_ACC_0002
+BMK-INC0010010,Biotech lab LIMS app login broken,2,2,2,2,Application,2026-05-15T15:20:00Z,BMK_ACC_0005
+BMK-INC0010011,Aerospace CAD license server unreachable,1,2,1,1,License,2026-05-15T15:50:00Z,BMK_ACC_0006
+BMK-INC0010012,Conglomerate SSO certificate expired,1,2,1,1,Identity,2026-05-15T16:10:00Z,BMK_ACC_0007
+BMK-INC0010013,Retail POS network outage store 47,2,2,2,2,Network,2026-05-15T16:35:00Z,BMK_ACC_0008
+BMK-INC0010014,Pied Piper chat app down enterprise tier,2,2,2,2,Application,2026-05-15T16:55:00Z,BMK_ACC_0009
+BMK-INC0010015,Hooli ML pipeline workers crashing OOM,2,2,2,2,Compute,2026-05-15T17:20:00Z,BMK_ACC_0010
+BMK-INC0010016,Wonka confection scheduler date glitch,3,2,3,3,Application,2026-05-15T17:45:00Z,BMK_ACC_0011
+BMK-INC0010017,Cyberdyne robot fleet telemetry lost,1,2,1,1,IoT,2026-05-15T18:00:00Z,BMK_ACC_0012
+BMK-INC0010018,Tyrell research portal SSO failures,2,2,2,2,Identity,2026-05-15T18:20:00Z,BMK_ACC_0013
+BMK-INC0010019,Massive Dynamic data lake replication lag,2,2,2,2,Data,2026-05-15T18:55:00Z,BMK_ACC_0014
+BMK-INC0010020,Spacely sprockets MES intermittent halt,2,2,2,2,Application,2026-05-15T19:30:00Z,BMK_ACC_0015
+BMK-INC0010021,Cogswell payroll integration stalled,2,2,2,2,Integration,2026-05-15T19:50:00Z,BMK_ACC_0016
+BMK-INC0010022,Soylent ERP order processing delayed,2,2,2,2,Application,2026-05-15T20:15:00Z,BMK_ACC_0017
+BMK-INC0010023,Oscorp R&D file share offline,2,2,2,2,Storage,2026-05-15T20:30:00Z,BMK_ACC_0018
+BMK-INC0010024,Roxxon SCADA gateway timeout,1,2,1,1,SCADA,2026-05-15T21:00:00Z,BMK_ACC_0019
+BMK-INC0010025,LexCorp build pipeline broken main branch,2,2,2,2,DevOps,2026-05-15T21:25:00Z,BMK_ACC_0020
+BMK-INC0010026,Yoyodyne wind tunnel HMI lost connection,1,2,1,1,SCADA,2026-05-15T21:55:00Z,BMK_ACC_0021
+BMK-INC0010027,InGen sequencer software crash overnight,2,2,2,2,Application,2026-05-15T22:30:00Z,BMK_ACC_0022
+BMK-INC0010028,Aperture lab access badge readers down,2,2,2,2,Identity,2026-05-15T23:00:00Z,BMK_ACC_0023
+BMK-INC0010029,Black Mesa telemetry collector flooded,3,2,3,3,Network,2026-05-16T01:00:00Z,BMK_ACC_0024
+BMK-INC0010030,Nakatomi trading dashboard 30s lag,2,2,2,2,Performance,2026-05-16T02:30:00Z,BMK_ACC_0025
+BMK-INC0010031,Weyland data hub access denied for partners,1,2,1,1,Identity,2026-05-16T05:45:00Z,BMK_ACC_0026
+BMK-INC0010032,BuynLarge checkout latency over 5s,1,2,1,1,Performance,2026-05-16T06:30:00Z,BMK_ACC_0027
+BMK-INC0010033,OmniCorp asset tracker maps broken,3,2,3,3,Application,2026-05-16T07:00:00Z,BMK_ACC_0028
+BMK-INC0010034,Veridian central reporting jobs fail,2,2,2,2,Reporting,2026-05-16T07:30:00Z,BMK_ACC_0029
+BMK-INC0010035,Encom CI runners exhausted on Sunday,3,2,3,3,DevOps,2026-05-16T08:00:00Z,BMK_ACC_0030
+BMK-INC0010036,Sirius chatbot model deploy stuck,2,2,2,2,Application,2026-05-16T08:25:00Z,BMK_ACC_0031
+BMK-INC0010037,Gringotts ledger reconciliation off by penny,2,2,2,2,Application,2026-05-16T09:00:00Z,BMK_ACC_0032
+BMK-INC0010038,Daily Planet CMS preview rendering broken,3,2,3,3,Application,2026-05-16T09:30:00Z,BMK_ACC_0033
+BMK-INC0010039,Tessier-Ashpool orbital comm hop fails,1,2,1,1,Network,2026-05-16T10:00:00Z,BMK_ACC_0034
+BMK-INC0010040,Krusty Krab POS app freezes on close,3,2,3,3,Application,2026-05-16T10:30:00Z,BMK_ACC_0035
+BMK-INC0010041,Planet Express dispatch system slow,2,2,2,2,Application,2026-05-16T11:00:00Z,BMK_ACC_0036
+BMK-INC0010042,MomCorp packaging line PLC lockout,1,2,1,1,SCADA,2026-05-16T11:30:00Z,BMK_ACC_0037
+BMK-INC0010043,Combine secure courier tracking outage,2,2,2,2,Application,2026-05-16T12:00:00Z,BMK_ACC_0038
+BMK-INC0010044,Black Lotus risk model batch failed,2,2,2,2,Data,2026-05-16T12:30:00Z,BMK_ACC_0039
+BMK-INC0010045,Helix LIMS write conflict every hour,2,2,2,2,Application,2026-05-16T13:00:00Z,BMK_ACC_0040
+BMK-INC0010046,Nuka-Cola bottling vision system blurry feed,3,2,3,3,IoT,2026-05-16T13:30:00Z,BMK_ACC_0041
+BMK-INC0010047,Vault-Tec asset registry sync delayed,2,2,2,2,Integration,2026-05-16T14:00:00Z,BMK_ACC_0042
+BMK-INC0010048,Sirius Online login flow CAPTCHA loop,2,2,2,2,Identity,2026-05-16T14:30:00Z,BMK_ACC_0043
+BMK-INC0010049,Mishima global finance HFM slow,2,2,2,2,Application,2026-05-16T15:00:00Z,BMK_ACC_0044
+BMK-INC0010050,Atlas chemicals SAP IDocs queueing,2,2,2,2,Integration,2026-05-16T15:30:00Z,BMK_ACC_0045
