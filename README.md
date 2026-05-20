@@ -287,9 +287,13 @@ validating that the kit works before committing to Path C.
 
 ## Citing this benchmark
 
-If you publish numbers from your own reproduction, please link back to:
-- The original blog post: *Reduce Your Claude Token Usage by 97% with CData Connect AI*
-- This repo
+Reproductions are welcome. If a link back to this repo fits naturally in
+what you publish, it helps others trace the methodology and the underlying
+numbers.
 
-Your numbers will differ from ours; that's expected. The **reduction trend**
+Your results will differ from ours; that's expected. The **reduction trend**
 across scenarios is what reproduces.
+
+## License
+
+MIT &mdash; see [LICENSE](./LICENSE).
