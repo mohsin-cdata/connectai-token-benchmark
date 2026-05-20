@@ -196,6 +196,33 @@ Copy-Item .env.example .env
 #   - MCP_WORKSPACE_URL, MCP_TOOLKIT_URL (optional)
 ```
 
+### Creating Connect AI connections (brief)
+
+For each of the three sources (Path B or C), in Connect AI:
+
+1. Click **Sources** in the left nav -> **+ Add Connection**.
+2. Search for the data source type (Google Sheets, Salesforce, ServiceNow,
+   Snowflake, ...).
+3. Fill in **Connection Name** (e.g. `BMK_CRM`, `BMK_ITSM`, `BMK_WH`) and
+   the source-specific connection fields:
+   - **Google Sheets** -- `Spreadsheet Id` (workbook file ID), optionally
+     `Spreadsheet` (tab name)
+   - **Salesforce** -- OAuth against your dev org
+   - **ServiceNow** -- instance URL + Basic/OAuth credentials
+   - **Snowflake** -- account URL, warehouse, database, schema, user
+4. Click **Save & Test**. Status should change to **Authenticated**.
+5. Create a Personal Access Token under your user icon -> **Settings** ->
+   **Personal Access Tokens** -> **Create PAT**. Paste it into
+   `CDATA_ACCESS_TOKEN` in your `.env`.
+
+After your three connections are live, create the Derived View in
+**Data Explorer -> SQL Editor**, paste the cross-source join from
+`seed/derived_view.sql` (or the Google Sheets variant from
+`seed/load-google-sheets.md`), execute, then **Save -> Save as Derived View**
+with the name `BMK_Incident_Account_Revenue`.
+
+Full per-source walkthroughs in `seed/load-*.md`.
+
 ### `--skip-mcp` (offline multi-turn, validates the harness)
 
 If you have an Anthropic API key but no CData connections, pass `--skip-mcp`:
