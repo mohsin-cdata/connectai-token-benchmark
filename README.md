@@ -196,7 +196,7 @@ Copy-Item .env.example .env
 #   - MCP_WORKSPACE_URL, MCP_TOOLKIT_URL (optional)
 ```
 
-### Creating Connect AI connections (brief)
+### Creating Connect AI connections
 
 For each of the three sources (Path B or C), in Connect AI:
 
@@ -215,19 +215,18 @@ For each of the three sources (Path B or C), in Connect AI:
    **Personal Access Tokens** -> **Create PAT**. Paste it into
    `CDATA_ACCESS_TOKEN` in your `.env`.
 
-After your three connections are live, create the Derived View in
-**Data Explorer -> SQL Editor**, paste the cross-source join from
-`seed/derived_view.sql` (or the Google Sheets variant from
-`seed/load-google-sheets.md`), execute, then **Save -> Save as Derived View**
-with the name `BMK_Incident_Account_Revenue`.
-
 Full per-source walkthroughs in `seed/load-*.md`.
 
-### Set up the rest of the Connect AI features
+### Set up the Connect AI features
 
-Each benchmark scenario measures a different feature. Derived Views is
-covered above. The remaining four:
+Each benchmark scenario measures a different Connect AI feature. Set up all
+five in the order the scenarios run:
 
+- **Derived Views** -- **Explorer** -> **SQL Editor** -> paste the
+  cross-source join from `seed/derived_view.sql` (or the Google Sheets
+  variant in `seed/load-google-sheets.md`) -> **Execute** -> **Save** ->
+  **Save as Derived View** -> name `BMK_Incident_Account_Revenue`.
+  Docs: https://docs.cloud.cdata.com/en/Data-Explorer.md
 - **Workspaces** -- Workspaces -> **+ Add** -> name `BMK_Workspace` ->
   **+ Add Asset** -> assign your three tables + the Derived View ->
   **View Endpoints** -> copy the **AI (MCP)** URL into `MCP_WORKSPACE_URL`.

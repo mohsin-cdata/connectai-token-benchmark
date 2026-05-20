@@ -1,7 +1,7 @@
 -- Connect AI Derived View - cross-source pre-join for the benchmark.
 --
--- Create this view in Connect AI's Data Explorer:
---   1. Click Data Explorer in the left nav
+-- Create this view in Connect AI's Explorer:
+--   1. Click Explorer in the left nav
 --   2. Click SQL Editor
 --   3. Paste this query (replacing connection names below with yours from .env)
 --   4. Click Execute -- verify rows return

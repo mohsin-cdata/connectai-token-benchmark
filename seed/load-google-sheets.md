@@ -118,7 +118,7 @@ Connect AI uses internally).
 The Derived View pre-joins the three workbooks into one cross-source view.
 In Connect AI:
 
-1. Click **Data Explorer &rsaquo; SQL Editor**.
+1. Click **Explorer &rsaquo; SQL Editor**.
 2. Paste this SQL (it references the three connections you just created):
 
    ```sql
@@ -148,7 +148,7 @@ In Connect AI:
 
 ## Step 6 - Verify
 
-Back in Data Explorer:
+Back in Explorer:
 
 ```sql
 SELECT COUNT(*) FROM [CData].[DerivedViews].[BMK_Incident_Account_Revenue]
