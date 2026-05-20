@@ -1,12 +1,11 @@
 # Easy mode: Load seed data via Google Sheets
 
 The fastest way to run the benchmark against three real Connect AI sources.
-Setup time: roughly **10-15 minutes** -- mostly a one-click sheet copy plus
-three CData connection creates. No SaaS sandbox setup, no Data Loader, no
-COPY INTO commands.
+Setup time: roughly **10-15 minutes** -- three sheet copies plus three CData
+connection creates. No SaaS sandbox setup, no Data Loader, no `COPY INTO`.
 
 This path is for recipients who want to **verify the benchmark methodology
-quickly**. The reproduced numbers will land near the published headline but
+quickly**. Reproduced numbers will land near the published headline but
 will differ slightly (Google Sheets has a leaner column shape than
 Salesforce's 73-column Account object, so the Raw baseline will be a touch
 lower than 183,541 tokens). The 95%+ reduction trend reproduces reliably.
@@ -17,101 +16,117 @@ For an **authentic reproduction** of the exact published numbers, use the
 
 ---
 
-## Step 1 - Copy the public Google Sheets
+## Step 1 - Copy the three template Google Sheets
 
-The benchmark uses three separate Google Sheets, one per source role
-(ITSM / CRM / Warehouse). Each has 50 rows prefixed `BMK_` (accounts) or
-`BMK-` (tickets), matching the seed CSVs in this folder.
+The benchmark uses three separate Google Sheets, one per source role.
+Each contains 50 rows prefixed `BMK_` (accounts) or `BMK-` (tickets),
+matching the seed CSVs in this folder.
 
-1. Open the public benchmark workbook:
-   <!-- Replace this URL once the template sheet is published -->
-   `https://docs.google.com/spreadsheets/d/<TEMPLATE_SHEET_ID>/`
+| Role | Template URL | Columns |
+| :-- | :-- | :-- |
+| **CRM** (accounts) | https://docs.google.com/spreadsheets/d/1KCZEr5bH8jNCwNudT-1bvyGkLO1FlJrZXNKFMaHN7Zs/edit | id, name, industry, annual_revenue, sla, customer_priority, active, segment |
+| **ITSM** (incidents) | https://docs.google.com/spreadsheets/d/12Ah5Wj9E5ZKi6V5h5i3QubENKeObxbHNsewEeSpeIc0/edit | number, short_description, priority, state, urgency, severity, category, opened_at, company |
+| **Warehouse** (opportunities) | https://docs.google.com/spreadsheets/d/1Y0ndX-_U46yEWeU6CE9L95YmsfH13RfawjeHasuMH9w/edit | account_id, opportunity_id, amount, stage_name, expected_revenue, is_won, fiscal_year, close_date |
 
-2. The workbook contains three tabs: `BMK_ITSM_incidents`, `BMK_CRM_accounts`,
-   `BMK_WH_opportunities`.
+For each template:
 
-3. Click **File &rsaquo; Make a copy** for each tab into its own new sheet in
-   your Google Drive. Name the resulting three sheets:
-   - `BMK ITSM incidents`
-   - `BMK CRM accounts`
-   - `BMK WH opportunities`
+1. Open the URL.
+2. Click **File &rsaquo; Make a copy** -- Google will copy it into your own Drive.
+3. (Optional) Rename the copy so you can find it later -- e.g.
+   `BMK Benchmark - CRM Accounts`.
+4. Note the file ID from the URL (the long string between `/d/` and `/edit`).
+   You will paste it into Connect AI in the next step.
 
-   (Three separate sheets, not one with three tabs. CData Connect AI's Google
-   Sheets connector treats each spreadsheet file as a separate source, which
-   is what preserves the cross-source discovery story.)
-
-4. Note each sheet's file ID -- the long string in the URL between
-   `/spreadsheets/d/` and `/edit`. You will need it during the CData
-   connection step.
+The default worksheet (tab) name inside each copy will match the role,
+so you do not need to rename anything inside the workbook.
 
 ---
 
-## Step 2 - Create three CData connections
+## Step 2 - Create three Connect AI connections
 
 In Connect AI (<a href='https://cloud.cdata.com/'>cloud.cdata.com</a>):
 
 1. Click **Sources** in the left navigation, then **+ Add Connection**.
 2. Search for **Google Sheets**, select it.
-3. Complete the OAuth flow against your Google account.
-4. In the connection settings, set **Spreadsheet** to the file ID of your
-   `BMK ITSM incidents` sheet.
-5. Name the connection `BMK_ITSM`. Click **Save & Test**.
+3. Complete the OAuth flow against your Google account (the one that owns
+   the copied sheets).
+4. In the connection settings, set the **Spreadsheet** field to the file ID
+   of your **CRM** copy (the long string from Step 1).
+5. Name the connection `BMK_CRM`. Click **Save & Test**.
 
-Repeat steps 1-5 for the CRM and warehouse sheets, naming them `BMK_CRM` and
-`BMK_WH` respectively.
+Repeat steps 1-5 twice more, using the ITSM and Warehouse file IDs.
+Name those connections `BMK_ITSM` and `BMK_WH`.
 
 You now have three Connect AI connections, each pointing at a separate
-Google Sheet -- the same three-source shape the benchmark expects.
+Google Sheets workbook -- the three-catalog shape the benchmark expects.
 
 ---
 
-## Step 3 - Update your .env
+## Step 3 - Identify the worksheet (table) name
+
+Each Google Sheets workbook has one worksheet inside (the imported CSV).
+In Connect AI, that worksheet becomes a **table** within the connection.
+
+For each connection, open the **Tables** tab inside Connect AI and confirm
+the table name. It is usually identical to the worksheet (tab) name in
+your Google Sheets copy -- something like `accounts`, `incidents`, or
+`opportunities`.
+
+Whatever they are, those exact strings go into your `.env` in Step 4.
+
+---
+
+## Step 4 - Update your .env
 
 Open `.env` and set:
 
 ```
 CDATA_ITSM_CATALOG=BMK_ITSM
 CDATA_ITSM_SCHEMA=GoogleSheets
-CDATA_ITSM_TABLE=BMK_ITSM_incidents
+CDATA_ITSM_TABLE=incidents
 
 CDATA_CRM_CATALOG=BMK_CRM
 CDATA_CRM_SCHEMA=GoogleSheets
-CDATA_CRM_TABLE=BMK_CRM_accounts
+CDATA_CRM_TABLE=accounts
 
 CDATA_WH_CATALOG=BMK_WH
 CDATA_WH_SCHEMA=GoogleSheets
-CDATA_WH_TABLE=BMK_WH_opportunities
+CDATA_WH_TABLE=opportunities
 ```
 
-The Schema for every Google Sheets-backed CData connection is literally
-`GoogleSheets` (capitalised exactly that way). The Table name matches the
-worksheet name in the spreadsheet (the tab name).
+Replace the **TABLE** values if your worksheet tabs ended up with different
+names than the templates'.
+
+The **SCHEMA** value is literally `GoogleSheets` for every Google Sheets
+connection (capitalised exactly that way -- that is the schema name
+Connect AI uses internally).
 
 ---
 
-## Step 4 - Create the Derived View
+## Step 5 - Create the Derived View
 
-The Derived View pre-joins the three sheets. In Connect AI:
+The Derived View pre-joins the three workbooks into one cross-source view.
+In Connect AI:
 
 1. Click **Data Explorer &rsaquo; SQL Editor**.
-2. Paste this SQL (it uses the three connections you just created):
+2. Paste this SQL (it references the three connections you just created):
 
    ```sql
    SELECT
        i.number              AS ticket_number,
        i.short_description   AS ticket_summary,
        i.priority            AS ticket_priority,
-       a.Name                AS AccountName,
-       a.Industry            AS Industry,
-       a.AnnualRevenue       AS AnnualRevenue,
-       o.AMOUNT              AS OpportunityAmount,
-       o.STAGE_NAME          AS StageName,
-       o.IS_WON              AS IsWon
-   FROM [BMK_ITSM].[GoogleSheets].[BMK_ITSM_incidents] i
-   LEFT JOIN [BMK_CRM].[GoogleSheets].[BMK_CRM_accounts] a
-       ON i.company = a.Id
-   LEFT JOIN [BMK_WH].[GoogleSheets].[BMK_WH_opportunities] o
-       ON a.Id = o.ACCOUNT_ID
+       a.name                AS AccountName,
+       a.industry            AS Industry,
+       a.annual_revenue      AS AnnualRevenue,
+       o.amount              AS OpportunityAmount,
+       o.stage_name          AS StageName,
+       o.is_won              AS IsWon
+   FROM [BMK_ITSM].[GoogleSheets].[incidents] i
+   LEFT JOIN [BMK_CRM].[GoogleSheets].[accounts] a
+       ON i.company = a.id
+   LEFT JOIN [BMK_WH].[GoogleSheets].[opportunities] o
+       ON a.id = o.account_id
    WHERE i.number LIKE 'BMK-%'
    ```
 
@@ -121,7 +136,7 @@ The Derived View pre-joins the three sheets. In Connect AI:
 
 ---
 
-## Step 5 - Verify
+## Step 6 - Verify
 
 Back in Data Explorer:
 
@@ -129,7 +144,8 @@ Back in Data Explorer:
 SELECT COUNT(*) FROM [CData].[DerivedViews].[BMK_Incident_Account_Revenue]
 ```
 
-Should return `50`.
+Should return roughly `50` (a few rows may drop if any opportunities are
+missing matching accounts -- the LEFT JOIN handles that gracefully).
 
 You are now ready to run the benchmark:
 
@@ -141,22 +157,28 @@ python run_benchmark.py --full --runs 3
 
 ## Cleanup
 
-When you are done, delete the three Google Sheets from your Drive and the
-three CData connections from your Connect AI Sources page. No source-side
-cleanup script needed -- you never touched a production SaaS account.
+When you are done:
+
+1. Delete the three Google Sheets copies from your Drive.
+2. Delete the three CData connections from Sources.
+3. Delete the Derived View from `CData &rsaquo; DerivedViews`.
+
+No source-side cleanup script needed -- the benchmark never touched a
+production SaaS account.
 
 ---
 
 ## Why this works
 
 The benchmark measures Claude's discovery cost across **three separate
-catalogs**. By giving Connect AI three Google Sheets connections (rather
-than one connection with three tabs), Claude still has to walk the same
+catalogs**. By using three Google Sheets connections (rather than one
+connection with three tabs), Claude still has to walk the same
 multi-catalog discovery chain to answer the user's question. The Raw
-baseline still calls `getCatalogs`, `getSchemas`, `getTables`, and
-`getColumns` across three sources, accumulating the same shape of input
-tokens -- just slightly fewer because Google Sheets exposes a lighter
-schema than enterprise Salesforce / ServiceNow / Snowflake.
+baseline calls `getCatalogs`, `getSchemas`, `getTables`, and `getColumns`
+across three sources, accumulating the same shape of input tokens -- just
+slightly fewer because Google Sheets exposes a lighter schema than
+enterprise Salesforce / ServiceNow / Snowflake objects.
 
 The Connect AI features being measured (Custom Tools, Derived Views,
-Workspaces) behave identically regardless of the underlying source type.
+Workspaces, etc.) behave identically regardless of the underlying source
+type.
