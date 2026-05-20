@@ -222,29 +222,42 @@ Full per-source walkthroughs in `seed/load-*.md`.
 Each benchmark scenario measures a different Connect AI feature. Set up all
 five in the order the scenarios run:
 
-- **Derived Views** -- **Explorer** -> **SQL Editor** -> paste the
-  cross-source join from `seed/derived_view.sql` (or the Google Sheets
-  variant in `seed/load-google-sheets.md`) -> **Execute** -> **Save** ->
-  **Save as Derived View** -> name `BMK_Incident_Account_Revenue`.
-  Docs: https://docs.cloud.cdata.com/en/Data-Explorer.md
-- **Workspaces** -- Workspaces -> **+ Add** -> name `BMK_Workspace` ->
-  **+ Add Asset** -> assign your three tables + the Derived View ->
-  **View Endpoints** -> copy the **AI (MCP)** URL into `MCP_WORKSPACE_URL`.
-  Docs: https://docs.cloud.cdata.com/en/Workspaces.md
-- **Toolkits + Custom Tools** -- AI -> Toolkits -> **+ Add** -> name
-  `BMK_Toolkit` -> assign your connections -> **Custom Tools** tab ->
-  **+ Add** -> SQL `SELECT TOP 50 * FROM [CData].[DerivedViews].[BMK_Incident_Account_Revenue]`
-  -> **Validate SQL** -> **Save Changes** -> enable. Copy the toolkit's
-  Remote MCP Server URL into `MCP_TOOLKIT_URL`.
-  Docs: https://docs.cloud.cdata.com/en/Toolkits.md
-- **Jobs / Caching** -- Jobs -> **Setup Cache Connection** (PostgreSQL) ->
-  **Save & Test** -> **+ Add Job** -> Cache -> pick tables -> frequency ->
-  scheme -> **Confirm** -> **Run Now**. Note: caching is not available for
-  relational sources (Snowflake/Postgres/MySQL).
-  Docs: https://docs.cloud.cdata.com/en/Caching.md
-- **AI Skills** -- no UI step. Tightly scripted system prompt that
-  pre-specifies the SQL and forbids discovery. Defined as
-  `SYSTEM_PROMPT_SKILL` in `config.py`.
+#### 1. Derived Views
+
+**Explorer** -> **SQL Editor** -> paste the cross-source join from
+`seed/derived_view.sql` (or the Google Sheets variant in
+`seed/load-google-sheets.md`) -> **Execute** -> **Save** ->
+**Save as Derived View** -> name `BMK_Incident_Account_Revenue`.
+Docs: https://docs.cloud.cdata.com/en/Data-Explorer.md
+
+#### 2. Workspaces
+
+Workspaces -> **+ Add** -> name `BMK_Workspace` -> **+ Add Asset** ->
+assign your three tables + the Derived View -> **View Endpoints** -> copy
+the **AI (MCP)** URL into `MCP_WORKSPACE_URL`.
+Docs: https://docs.cloud.cdata.com/en/Workspaces.md
+
+#### 3. Toolkits and Custom Tools
+
+AI -> Toolkits -> **+ Add** -> name `BMK_Toolkit` -> assign your
+connections -> **Custom Tools** tab -> **+ Add** -> SQL
+`SELECT TOP 50 * FROM [CData].[DerivedViews].[BMK_Incident_Account_Revenue]`
+-> **Validate SQL** -> **Save Changes** -> enable. Copy the toolkit's
+Remote MCP Server URL into `MCP_TOOLKIT_URL`.
+Docs: https://docs.cloud.cdata.com/en/Toolkits.md
+
+#### 4. Jobs / Caching
+
+Jobs -> **Setup Cache Connection** (PostgreSQL) -> **Save & Test** ->
+**+ Add Job** -> Cache -> pick tables -> frequency -> scheme ->
+**Confirm** -> **Run Now**. Caching is not available for relational
+sources (Snowflake / Postgres / MySQL).
+Docs: https://docs.cloud.cdata.com/en/Caching.md
+
+#### 5. AI Skills
+
+No UI step. Tightly scripted system prompt that pre-specifies the SQL and
+forbids discovery. Defined as `SYSTEM_PROMPT_SKILL` in `config.py`.
 
 Full Connect AI feature documentation: https://docs.cloud.cdata.com/en/docs
 
