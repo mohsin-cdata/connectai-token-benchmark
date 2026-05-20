@@ -223,6 +223,32 @@ with the name `BMK_Incident_Account_Revenue`.
 
 Full per-source walkthroughs in `seed/load-*.md`.
 
+### Set up the rest of the Connect AI features
+
+Each benchmark scenario measures a different feature. Derived Views is
+covered above. The remaining four:
+
+- **Workspaces** -- Workspaces -> **+ Add** -> name `BMK_Workspace` ->
+  **+ Add Asset** -> assign your three tables + the Derived View ->
+  **View Endpoints** -> copy the **AI (MCP)** URL into `MCP_WORKSPACE_URL`.
+  Docs: https://docs.cloud.cdata.com/en/Workspaces.md
+- **Toolkits + Custom Tools** -- AI -> Toolkits -> **+ Add** -> name
+  `BMK_Toolkit` -> assign your connections -> **Custom Tools** tab ->
+  **+ Add** -> SQL `SELECT TOP 50 * FROM [CData].[DerivedViews].[BMK_Incident_Account_Revenue]`
+  -> **Validate SQL** -> **Save Changes** -> enable. Copy the toolkit's
+  Remote MCP Server URL into `MCP_TOOLKIT_URL`.
+  Docs: https://docs.cloud.cdata.com/en/Toolkits.md
+- **Jobs / Caching** -- Jobs -> **Setup Cache Connection** (PostgreSQL) ->
+  **Save & Test** -> **+ Add Job** -> Cache -> pick tables -> frequency ->
+  scheme -> **Confirm** -> **Run Now**. Note: caching is not available for
+  relational sources (Snowflake/Postgres/MySQL).
+  Docs: https://docs.cloud.cdata.com/en/Caching.md
+- **AI Skills** -- no UI step. Tightly scripted system prompt that
+  pre-specifies the SQL and forbids discovery. Defined as
+  `SYSTEM_PROMPT_SKILL` in `config.py`.
+
+Full Connect AI feature documentation: https://docs.cloud.cdata.com/en/docs
+
 ### `--skip-mcp` (offline multi-turn, validates the harness)
 
 If you have an Anthropic API key but no CData connections, pass `--skip-mcp`:
