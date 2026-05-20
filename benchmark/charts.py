@@ -310,8 +310,12 @@ def write_mermaid_source(rows: List[Dict[str, Any]], out_path: str,
 
 
 def render_mermaid_image(mmd_path: str, out_webp_path: str,
-                         width: int = 1600, height: int = 900) -> str:
+                         width: int = 1600, height: int = 900,
+                         css_file: str = "") -> str:
     """Render .mmd to .webp via mermaid-cli (npx -y @mermaid-js/mermaid-cli).
+
+    Optional css_file injects a custom CSS file via mermaid-cli's --cssFile
+    flag -- useful for @font-face declarations that point at bundled TTFs.
 
     Falls back to leaving only the .mmd source if mermaid-cli isn't installed.
     """
@@ -346,6 +350,8 @@ def render_mermaid_image(mmd_path: str, out_webp_path: str,
         "-H", str(height),
         "-c", cfg_path,
     ]
+    if css_file and os.path.exists(css_file):
+        cmd.extend(["-C", css_file])
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=180)
     except Exception as e:

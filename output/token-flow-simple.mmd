@@ -5,24 +5,19 @@ title: "Connect AI compresses Claude's discovery cost"
   "theme": "base",
   "themeVariables": {
     "background":         "#F1EEE9",
-    "primaryColor":       "#002660",
-    "primaryTextColor":   "#F1EEE9",
-    "primaryBorderColor": "#15151C",
-    "lineColor":          "#15151C",
-    "secondaryColor":     "#FFE500",
-    "tertiaryColor":      "#B5B9BC",
-    "fontFamily":         "Inter, Arial, sans-serif",
-    "fontSize":           "16px"
+    "fontFamily":         "DM Sans, Inter, Arial, sans-serif",
+    "fontSize":           "16px",
+    "lineColor":          "#002660"
   },
-  "flowchart": {"nodeSpacing": 40, "rankSpacing": 50, "padding": 14}
+  "flowchart": {"nodeSpacing": 40, "rankSpacing": 55, "padding": 14}
 }}%%
 flowchart LR
-    U["Same user question"]:::userBox
-    C[Claude]:::claudeBox
-    D["Discovery chain<br/>183K tokens · 22 calls"]:::costBox
-    T["get_incidents Custom Tool<br/>4.4K tokens · 1 call"]:::savedBox
-    A1[Answer]:::resultBox
-    A2[Answer]:::resultBox
+    U[Same user question]:::mono
+    C[Claude]:::mono
+    D["Discovery chain<br/>183K tokens · 22 calls"]:::tool
+    T["get_incidents Custom Tool<br/>4.4K tokens · 1 call"]:::tool
+    A1[Answer]:::mono
+    A2[Answer]:::mono
 
     U --> C
     C -->|"Raw — 11 universal tools"| D
@@ -30,8 +25,5 @@ flowchart LR
     C -.->|"Connect AI — 1 Custom Tool"| T
     T --> A2
 
-    classDef userBox    fill:#002660,stroke:#15151C,stroke-width:2px,color:#F1EEE9,font-weight:bold;
-    classDef claudeBox  fill:#002660,stroke:#15151C,stroke-width:2px,color:#F1EEE9,font-weight:bold;
-    classDef costBox    fill:#B5B9BC,stroke:#15151C,stroke-width:1.5px,color:#15151C;
-    classDef savedBox   fill:#FFE500,stroke:#15151C,stroke-width:2px,color:#15151C,font-weight:bold;
-    classDef resultBox  fill:#F1EEE9,stroke:#15151C,stroke-width:1.5px,color:#15151C;
+    classDef mono fill:#FFFFFF,stroke:#002660,stroke-width:1.5px,color:#15151C;
+    classDef tool fill:#002660,stroke:#15151C,stroke-width:0.5px,color:#F1EEE9,font-weight:bold;

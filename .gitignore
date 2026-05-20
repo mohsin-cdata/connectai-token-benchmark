@@ -10,6 +10,8 @@ internal/
 # Runtime audit outputs (regenerated when benchmark fires)
 output/results_final.json
 output/run_ledger.jsonl
+output/*.mmd.cfg.json
+output/font-loader.css
 
 # Python
 __pycache__/
