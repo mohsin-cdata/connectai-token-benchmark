@@ -48,14 +48,24 @@ In Connect AI (<a href='https://cloud.cdata.com/'>cloud.cdata.com</a>):
 
 1. Click **Sources** in the left navigation, then **+ Add Connection**.
 2. Search for **Google Sheets**, select it.
-3. Complete the OAuth flow against your Google account (the one that owns
-   the copied sheets).
-4. In the connection settings, set the **Spreadsheet** field to the file ID
-   of your **CRM** copy (the long string from Step 1).
-5. Name the connection `BMK_CRM`. Click **Save & Test**.
+3. On the **Basic Settings** tab, fill in:
+   - **Connection Name** = `BMK_CRM`
+   - **Auth Scheme** = `OAuth`
+   - **Spreadsheet Id** = the file ID of your **CRM** copy (the long string
+     between `/d/` and `/edit` in the URL)
+   - **Spreadsheet** = `accounts` (the worksheet/tab name -- optional but
+     recommended; narrows discovery to just this one tab)
+   - **Folder Name** = leave empty
+4. Click **Sign in** to complete the Google OAuth flow against the account
+   that owns the copied sheet.
+5. Click **Save & Test**. The Status should change to **Authenticated**.
 
-Repeat steps 1-5 twice more, using the ITSM and Warehouse file IDs.
-Name those connections `BMK_ITSM` and `BMK_WH`.
+Repeat steps 1-5 twice more for the other two roles:
+
+| Connection Name | Spreadsheet Id | Spreadsheet (tab) |
+| :-- | :-- | :-- |
+| `BMK_ITSM` | file ID of your **incidents** copy | `incidents` |
+| `BMK_WH`   | file ID of your **opportunities** copy | `opportunities` |
 
 You now have three Connect AI connections, each pointing at a separate
 Google Sheets workbook -- the three-catalog shape the benchmark expects.
